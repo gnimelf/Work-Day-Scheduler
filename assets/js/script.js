@@ -1,6 +1,6 @@
 // SETUP
 // Day object template that will be used as a daily schedule template
-var day = {
+var DayTemp = {
     'day': '',
     '600': '',
     '700': '',
@@ -16,7 +16,7 @@ var day = {
     '1700': '',
     '1800': ''
 }
-
+var currentDay = '';
 // store all days that get populated/changed
 var daily_schedules = [];
 
@@ -29,17 +29,35 @@ var year = date.getFullYear()
 
 // 2. DISPLAY current day and highlight current time on screen
 function displayDay(){
-    
+    // if dayObj is already saved in daily schedule
+    if (daily_schedules !== []){
+        // create new object 
+        currentDay = DayTemp;
+    } else {
+        // check if array contains day object with its day value === to today
+        for (let i = 0; i < daily_schedules.length; i++) {
+            if (daily_schedules[i]['day'] === `${month}-${day}-${year}`){
+                currentDay = daily_schedules[i];
+            } else {
+                // create new day object
+                currentDay = DayTemp;
+            }
+        }
+    }
 }
 
-// Grab values from screen an store them in array on change
+// Grab values from screen an store them in array ON CHANGE
 function save(){
 
 // Need to create a name that indicate month/day/year for saving
 
-    currentDay = day;
-    currentDay['date'] = `${}`
+    currentDay['date'] = `${month}-${day}-${year}`
     currentDay['1600'] = "Event changed"
-    daily_schedules.push[]
+    daily_schedules.push(currentDay);
 }
 
+function get() {
+
+}
+
+console.log(daily_schedules);

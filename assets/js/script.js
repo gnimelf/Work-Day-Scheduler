@@ -1,7 +1,8 @@
+var currentDayEl = $("#currentDay");
 // SETUP
 // Day object template that will be used as a daily schedule template
 var DayTemp = {
-    'day': '',
+    'date': '',
     '600': '',
     '700': '',
     '800': '',
@@ -18,26 +19,33 @@ var DayTemp = {
 }
 var currentDay = '';
 // store all days that get populated/changed
-var daily_schedules = [];
+var dailySchedules = [];
 
-// 1. Grab current date and time
-var date = new Date();
-var month = date.getMonth(); // Get month
-var day = date.getDate(); // Get day
-var time = date.hours(); // Get hour
-var year = date.getFullYear()
+var date = moment(); // current day
+var year = moment().format("YYYY");
+var month = moment().format("MM");
+var day = moment().format("D");
+var hour = moment().format("H");
+var dailySchedulesPos = '';
+
 
 // 2. DISPLAY current day and highlight current time on screen
 function displayDay(){
     // if dayObj is already saved in daily schedule
-    if (daily_schedules !== []){
+    if (dailySchedules !== []){
         // create new object 
-        currentDay = DayTemp;
+        currentDay = new Object(DayTemp);
+        currentDay.date = moment(date).format("MM-DD-YYYY");
+        dailySchedulesPos = 0;
+        dailySchedules.push(currentDay);
+
+        currentDayEl.text(moment(date).format("MMMM Do, YYYY"));
     } else {
         // check if array contains day object with its day value === to today
-        for (let i = 0; i < daily_schedules.length; i++) {
-            if (daily_schedules[i]['day'] === `${month}-${day}-${year}`){
-                currentDay = daily_schedules[i];
+        for (let i = 0; i < dailySchedules.length; i++) {
+            if (dailySchedules[i]['date'] === `${date}`){
+                currentDay = dailySchedulesPos[i];
+                dailySchedulesPos = i;
             } else {
                 // create new day object
                 currentDay = DayTemp;
@@ -53,11 +61,28 @@ function save(){
 
     currentDay['date'] = `${month}-${day}-${year}`
     currentDay['1600'] = "Event changed"
-    daily_schedules.push(currentDay);
+    dailySchedules.push(currentDay);
 }
 
-function get() {
-
+function getLocalStorage() {
+    // if (localStorage.getItem("schedule") !== null) {
+    //     daily_schedules = 
+    // }
 }
 
-console.log(daily_schedules);
+displayDay();
+
+console.log(dailySchedules);
+
+
+
+
+
+
+
+// 1. Grab current date and time without moment
+// var date = new Date();
+// var month = date.getMonth(); // Get month
+// var day = date.getDate(); // Get day
+// var time = date.hours(); // Get hour
+// var year = date.getFullYear()

@@ -36,10 +36,11 @@ var dailySchedulesPosition = 0;
 
 // 2. DISPLAY current day and highlight current time on screen
 function displayDay() {
-    // if dayObj is already saved in daily schedule
+    
     getLocalStorage();
     colorFormat();
 
+    // if dayObj is already saved in daily schedule
     if (dailySchedules.length === 0) {
         // create new object 
         currentDay = new Object(DayTemp);
@@ -72,10 +73,14 @@ function displayDay() {
 
 // Grab values from screen an store them in array ON CHANGE
 function save(event) {
+    
     var buttonPressedID = event.target.id;
     var buttonNumber = buttonPressedID.toString().split("n")[1]; // Grab only button id number value
+    
     for (i = 0; i < textAreaEl.length; i++) {
+        
         if (textAreaEl[i].id === buttonNumber) {
+            console.log("entered if");
             currentDay[buttonNumber] = textAreaEl[i].value;
             scheduleStorage = JSON.stringify(dailySchedules);
             localStorage.setItem("dailySchedules", scheduleStorage);
@@ -90,52 +95,26 @@ function getLocalStorage() {
 
 }
 
+// Populate the schedule with data from localstorage
 function showCurrentSchedule() {
     for (i = 0; i < textAreaEl.length; i++) {
         textAreaEl[i].value = currentDay[500 + Number(`${i+1}00`)]
     }
 }
 
+// Color schedule by time of day
 function colorFormat(){
     for (var i = 0; i < textAreaEl.length; i++){
-        if (Number(textAreaEl[i].id.slice(0,2)) < Number(hour)){
+        var currentRowTime =  Number(textAreaEl[i].name.slice(0,2))
+        if ( currentRowTime< Number(hour)){
             console.log("less than")
-            // textAreaEl.removeClass("present", "future");
-            textAreaEl.addClass("past");
-
-        } else if (Number(textAreaEl[i].id.slice(0,2)) === Number(hour)){
-            // textAreaEl.removeClass("future", "past");
-            textAreaEl.addClass("present");
-        } else if (Number(textAreaEl[i].id.slice(0,2)) > Number(hour)) {
-            // textAreaEl.removeClass("present", "past");
-            textAreaEl.addClass("future");
+            textAreaEl[i].classList.add("past")
+        } else if (currentRowTime == Number(hour)){
+            textAreaEl[i].classList.add("present");
+        } else if (currentRowTime > Number(hour)) {
+            textAreaEl[i].classList.add("future");
         }
     }
 }
 
-// function removeZero(number){
-//     if (number.slice(1) === 0){
-//         return number.split("")[1];
-//     } else {
-//         return number;
-//     }
-// }
-
 displayDay();
-
-
-// console.log(dailySchedules);
-
-
-// 1. Grab current date and time without moment
-// var date = new Date();
-// var month = date.getMonth(); // Get month
-// var day = date.getDate(); // Get day
-// var time = date.hours(); // Get hour
-// var year = date.getFullYear()
-
-
-// Need to create a name that indicate month/day/year for saving
-// currentDay['date'] = `${month}-${day}-${year}`
-// currentDay['1600'] = "Event changed"
-// dailySchedules.push(currentDay);

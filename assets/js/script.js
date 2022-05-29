@@ -37,38 +37,41 @@ var dailySchedulesPosition = 0;
 // 2. DISPLAY current day and highlight current time on screen
 function displayDay() {
     
+    // load localstorage
     getLocalStorage();
+
+    // apply coloring to schedule
     colorFormat();
 
     // if dayObj is already saved in daily schedule
     if (dailySchedules.length === 0) {
         // create new object 
-        currentDay = new Object(DayTemp);
-        currentDay.date = date.format("MM-DD-YYYY");
-        currentDayEl.text(date.format("MMMM Do, YYYY"));
-        dailySchedulesPosition = 0;
-        dailySchedules.push(currentDay);
-        scheduleStorage = JSON.stringify(dailySchedules);
-        localStorage.setItem("dailySchedules", scheduleStorage);
+        createNewDayObject();
     }
     else {
         // check if array contains day object with its day value === to today
         for (let i = 0; i < dailySchedules.length; i++) {
             if (dailySchedules[i]['date'] === `${date.format("MM-DD-YYYY")}`) {
+                currentDayEl.text(date.format("MMMM Do, YYYY"));
                 currentDay = dailySchedules[i];
                 dailySchedulesPosition = i;
                 showCurrentSchedule();
             } else {
                 // create new day object
-                currentDay = new Object (DayTemp);
-                currentDay.date = date.format("MM-DD-YYYY");
-                currentDayEl.text(date.format("MMMM Do, YYYY"));
-                dailySchedules.push(currentDay);
-                scheduleStorage = JSON.stringify(dailySchedules);
-                localStorage.setItem("dailySchedules", scheduleStorage);
+                createNewDayObject();
             }
         }
     }
+}
+
+function createNewDayObject() {
+    currentDay = new Object (DayTemp);
+    currentDay.date = date.format("MM-DD-YYYY");
+    currentDayEl.text(date.format("MMMM Do, YYYY"));
+    dailySchedules.push(currentDay);
+    dailySchedulesPosition = 0;
+    scheduleStorage = JSON.stringify(dailySchedules);
+    localStorage.setItem("dailySchedules", scheduleStorage);
 }
 
 // Grab values from screen an store them in array ON CHANGE

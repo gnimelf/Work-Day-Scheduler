@@ -9,15 +9,10 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
     <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-      crossorigin="anonymous"
-    />
-    <link
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
+    <script src="./assets/fontawesome/js/all.min.js"></script>
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
@@ -30,211 +25,121 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+      <div class="input-group mb-3 row">
+        <p class="hour">6AM</p>
+        <textarea name="600" id="600" class="past" cols="1" rows="3">600</textarea>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary saveBtn" type="button">
+            <i class="fa-solid fa-lock"></i>
+          </button>
+        </div>
+      </div>
+      <div class="input-group mb-3 row">
+        <p class="hour">7AM</p>
+        <textarea name="700" id="700" class="past" cols="1" rows="3">700</textarea>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary saveBtn" type="button">
+            <i class="fa-solid fa-lock"></i>
+          </button>
+        </div>
+      </div>
+      <div class="input-group mb-3 row">
+        <p class="hour">8AM</p>
+        <textarea name="800" id="800" class="past" cols="1" rows="3">700</textarea>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary saveBtn" type="button">
+            <i class="fa-solid fa-lock"></i>
+          </button>
+        </div>
+      </div>
+      <div class="input-group mb-3 row">
+        <p class="hour">9AM</p>
+        <textarea name="900" id="900" class="past" cols="1" rows="3">700</textarea>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary saveBtn" type="button">
+            <i class="fa-solid fa-lock"></i>
+          </button>
+        </div>
+      </div>
+      <div class="input-group mb-3 row">
+        <p class="hour">10AM</p>
+        <textarea name="1000" id="1000" class="past" cols="1" rows="3">700</textarea>
 
-      <div class="input-group mb-3">
-        <p>6:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="600"
-          aria-label=""
-          aria-describedby="basic-addon2"
-        />
         <div class="input-group-append">
           <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
+            <i class="fa-solid fa-lock"></i>
           </button>
         </div>
       </div>
-      <div class="input-group mb-3">
-        <p>7:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="700"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
+      <div class="input-group mb-3 row">
+        <p class="hour">11AM</p>
+        <textarea name="1100" id="1100" class="past" cols="1" rows="3">700</textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
+            <i class="fa-solid fa-lock"></i>
           </button>
         </div>
       </div>
-      <div class="input-group mb-3">
-        <p>8:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="800"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
+      <div class="input-group mb-3 row">
+        <p class="hour">12PM</p>
+        <textarea name="1200" id="1200" class="past" cols="1" rows="3">700</textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
+            <i class="fa-solid fa-lock"></i>
           </button>
         </div>
       </div>
-      <div class="input-group mb-3">
-        <p>9:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="900"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
+      <div class="input-group mb-3 row">
+        <p class="hour">1PM</p>
+        <textarea name="100" id="100" class="past" cols="1" rows="3">700</textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
+            <i class="fa-solid fa-lock"></i>
           </button>
         </div>
       </div>
-      <div class="input-group mb-3">
-        <p>10:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="1000"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
+      <div class="input-group mb-3 row">
+        <p class="hour">2PM</p>
+        <textarea name="200" id="200" class="past" cols="1" rows="3">700</textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
+            <i class="fa-solid fa-lock"></i>
           </button>
         </div>
       </div>
-      <div class="input-group mb-3">
-        <p>11:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="1100"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
+      <div class="input-group mb-3 row">
+        <p class="hour">3PM</p>
+        <textarea name="300" id="300" class="past" cols="1" rows="3">700</textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
+            <i class="fa-solid fa-lock"></i>
           </button>
         </div>
       </div>
-      <div class="input-group mb-3">
-        <p>12:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="1200"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
+      <div class="input-group mb-3 row">
+        <p class="hour">4PM</p>
+        <textarea name="400" id="400" class="past" cols="1" rows="3">700</textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
+            <i class="fa-solid fa-lock"></i>
           </button>
         </div>
       </div>
-      <div class="input-group mb-3">
-        <p>1:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="100"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
+      <div class="input-group mb-3 row">
+        <p class="hour">5PM</p>
+        <textarea name="500" id="500" class="past" cols="1" rows="3">700</textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
+            <i class="fa-solid fa-lock"></i>
           </button>
         </div>
       </div>
-      <div class="input-group mb-3">
-        <p>2:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="200"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
+      <div class="input-group mb-3 row">
+        <p class="hour">6PM</p>
+        <textarea name="600" id="600" class="past" cols="1" rows="3">700</textarea>
         <div class="input-group-append">
           <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
-          </button>
-        </div>
-      </div>
-      <div class="input-group mb-3">
-        <p>3:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="300"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
-          </button>
-        </div>
-      </div>
-      <div class="input-group mb-3">
-        <p>4:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="400"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
-          </button>
-        </div>
-      </div>
-      <div class="input-group mb-3">
-        <p>5:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="500"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
-          </button>
-        </div>
-      </div>
-      <div class="input-group mb-3">
-        <p>6:00</p>
-        <input
-          type="text"
-          class="form-control"
-          value="600"
-          placeholder="Recipient's username"
-          aria-label="Recipient's username"
-          aria-describedby="basic-addon2"
-        />
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary saveBtn" type="button">
-            Button
+            <i class="fa-solid fa-lock"></i>
           </button>
         </div>
       </div>

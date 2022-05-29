@@ -1,4 +1,5 @@
 var currentDayEl = $("#currentDay");
+var btnEl = $(".saveBtn");
 // SETUP
 // Day object template that will be used as a daily schedule template
 var DayTemp = {
@@ -20,7 +21,10 @@ var DayTemp = {
 var currentDay = '';
 // store all days that get populated/changed
 var dailySchedules = [];
+btnEl.on("click", function(){console.log("button pressed")})
 
+
+// Date info
 var date = moment(); // current day
 var year = moment().format("YYYY");
 var month = moment().format("MM");
@@ -57,11 +61,11 @@ function displayDay(){
 // Grab values from screen an store them in array ON CHANGE
 function save(){
 
-// Need to create a name that indicate month/day/year for saving
-
-    currentDay['date'] = `${month}-${day}-${year}`
-    currentDay['1600'] = "Event changed"
-    dailySchedules.push(currentDay);
+    // Need to create a name that indicate month/day/year for saving
+    console.log("pressed");
+    // currentDay['date'] = `${month}-${day}-${year}`
+    // currentDay['1600'] = "Event changed"
+    // dailySchedules.push(currentDay);
 }
 
 function getLocalStorage() {

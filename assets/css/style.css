@@ -9,6 +9,7 @@ body {
     position:absolute;
     margin-left: -37px;
     font-size: 30px;
+    z-index: -1;
   }
   
   textarea {

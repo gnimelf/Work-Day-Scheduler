@@ -6,17 +6,17 @@ A simple calendar application that allows a user to save events for each hour of
 
 ## Usage
 
-Enter data in to one of the text areas and then click the lock button to save your information.
+Enter data into a of the text area and then click the lock button to save your information for that time slot.
 
 [![screenshot](./assets/images/daily_work_schedule.png)](https://gnimelf.github.io/Work-Day-Scheduler/)
 
 ## Credits
 
-Google fonts - https://fonts.google.com\
-Font Awesome - https://fontawesome.com/\
-Moment.js - https://momentjs.com/\
-jQuery - https://jquery.com/\
-Bootstrap - https://getbootstrap.com/
+Google fonts - https://fonts.google.com<br>
+Font Awesome - https://fontawesome.com/<br>
+Moment.js - https://momentjs.com/<br>
+jQuery - https://jquery.com/<br>
+Bootstrap - https://getbootstrap.com
 
 I take credit for creating this website.
 

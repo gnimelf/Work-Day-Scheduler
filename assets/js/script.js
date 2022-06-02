@@ -29,7 +29,6 @@ var dailySchedules = [];
 btnEl.on("click", save);
 textAreaEl.on("keyup", (event) => {
     textAreaActive = event;
-    console.log(textAreaActive);
 });
 
 // Date info
@@ -147,7 +146,6 @@ displayDay();
 timeInterval = setInterval(()=>{
 
     hour = moment().format("H");
-    console.log("updated, hour is" + hour)
     
     if (textAreaActive != ''){
         save(textAreaActive);

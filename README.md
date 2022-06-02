@@ -4,8 +4,6 @@
 
 A simple calendar application that allows a user to save events for each hour of the day.
 
-You'll need to use the Moment.js library to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
-
 ## Usage
 
 Enter data in to one of the text areas and then click the lock button to save your information.

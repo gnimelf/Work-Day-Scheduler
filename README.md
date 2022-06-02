@@ -6,7 +6,7 @@ A simple calendar application that allows a user to save events for each hour of
 
 ## Usage
 
-Enter data into a of the text area and then click the lock button to save your information for that time slot.
+Enter data into a text area, then click the lock button to save your information for that time slot.
 
 [![screenshot](./assets/images/daily_work_schedule.png)](https://gnimelf.github.io/Work-Day-Scheduler/)
 

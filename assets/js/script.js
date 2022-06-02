@@ -151,8 +151,9 @@ timeInterval = setInterval(()=>{
     
     if (textAreaActive != ''){
         save(textAreaActive);
-    }
+        displayDay();
+    } 
+    
+    colorFormat(); 
 
-    displayDay();
-
-},60000);
+},15000);

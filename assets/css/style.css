@@ -49,6 +49,8 @@ body {
     height: 80px;
     width: 100%;
     border-top: 1px solid white;
+    justify-content: center;
+    margin-left: 0;
   }
   
   .hour {

@@ -2,7 +2,7 @@ var currentDayEl = $("#currentDay");
 var btnEl = $(".saveBtn");
 var textAreaEl = $("textarea");
 var scheduleStorage = localStorage.getItem("dailySchedules");
-
+var timeInterval = '';
 // Day object template that will be used as a daily schedule template
 var DayTemp = {
     'date': '',
@@ -20,28 +20,34 @@ var DayTemp = {
     '1700': '',
     '1800': ''
 }
-
+var textAreaActive = '';
 var currentDay = '';
 // store all days that get populated/changed
 var dailySchedules = [];
-btnEl.on("click", save)
+
+// Eventlisteners
+btnEl.on("click", save);
+textAreaEl.on("keyup", (event) => {
+    textAreaActive = event;
+    console.log(textAreaActive);
+});
 
 // Date info
 var date = moment(); // current day
-var year = moment().format("YYYY");
-var month = moment().format("MM");
-var day = moment().format("D");
-var hour = moment().format("H");
+var year = date.format("YYYY");
+var month = date.format("MM");
+var day = date.format("D");
+var hour = date.format("H");
 var dailySchedulesPosition = 0;
 
 // 2. DISPLAY current day and highlight current time on screen
 function displayDay() {
-    
+
     // load localstorage
     getLocalStorage();
 
     // apply coloring to schedule
-    colorFormat();
+    colorFormat(hour);
 
     // if dayObj is already saved in daily schedule
     if (dailySchedules.length === 0) {
@@ -77,18 +83,30 @@ function createNewDayObject() {
 // Grab values from screen an store them in array ON CHANGE
 function save(event) {
     
-    var buttonPressedID = event.target.id;
-    var buttonNumber = buttonPressedID.toString().split("n")[1]; // Grab only button id number value
-    
-    for (i = 0; i < textAreaEl.length; i++) {
+    if (event.type === "keyup") {
+        // save textArea on change event
         
-        if (textAreaEl[i].id === buttonNumber) {
-            console.log("entered if");
-            currentDay[buttonNumber] = textAreaEl[i].value;
-            scheduleStorage = JSON.stringify(dailySchedules);
-            localStorage.setItem("dailySchedules", scheduleStorage);
+        var textAreaId = textAreaActive.target.id;
+        currentDay[textAreaId] = textAreaActive.target.value;
+        scheduleStorage = JSON.stringify(dailySchedules);
+        localStorage.setItem("dailySchedules", scheduleStorage);
+        
+    } else if (event.type === "click") {
+        // save textArea on click event
+
+        var buttonPressedID = event.target.id;
+        var buttonNumber = buttonPressedID.toString().split("n")[1]; // Grab only button id number value
+        
+        for (i = 0; i < textAreaEl.length; i++) {
+            
+            if (textAreaEl[i].id === buttonNumber) {
+                currentDay[buttonNumber] = textAreaEl[i].value;
+                scheduleStorage = JSON.stringify(dailySchedules);
+                localStorage.setItem("dailySchedules", scheduleStorage);
+            }
         }
     }
+    textAreaActive = '';
 }
 
 function getLocalStorage() {
@@ -108,10 +126,13 @@ function showCurrentSchedule() {
 // Color schedule by time of day
 function colorFormat(){
     for (var i = 0; i < textAreaEl.length; i++){
-        var currentRowTime =  Number(textAreaEl[i].name.slice(0,2))
-        if ( currentRowTime< Number(hour)){
-            console.log("less than")
-            textAreaEl[i].classList.add("past")
+        var currentRowTime =  Number(textAreaEl[i].name.slice(0,2));
+
+        //clear class list for the ith element
+        textAreaEl[i].classList = [];
+
+        if ( currentRowTime < Number(hour)){
+            textAreaEl[i].classList.add("past");
         } else if (currentRowTime == Number(hour)){
             textAreaEl[i].classList.add("present");
         } else if (currentRowTime > Number(hour)) {
@@ -121,3 +142,17 @@ function colorFormat(){
 }
 
 displayDay();
+
+// Refresh page every min
+timeInterval = setInterval(()=>{
+
+    hour = moment().format("H");
+    console.log("updated, hour is" + hour)
+    
+    if (textAreaActive != ''){
+        save(textAreaActive);
+    }
+
+    displayDay();
+
+},60000);

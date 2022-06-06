@@ -27,6 +27,7 @@ var dailySchedules = [];
 
 // Eventlisteners
 btnEl.on("click", save);
+
 textAreaEl.on("keyup", (event) => {
     textAreaActive = event;
 });
@@ -36,7 +37,7 @@ var date = moment(); // current day
 var year = date.format("YYYY");
 var month = date.format("MM");
 var day = date.format("D");
-var hour = date.format("H");
+var hour = moment().hour();
 var dailySchedulesPosition = 0;
 
 // 2. DISPLAY current day and highlight current time on screen
@@ -112,7 +113,6 @@ function getLocalStorage() {
     if (localStorage.getItem("dailySchedules")){
         dailySchedules = JSON.parse(localStorage.getItem("dailySchedules"));
     }
-
 }
 
 // Populate the schedule with data from localstorage
@@ -130,11 +130,11 @@ function colorFormat(){
         //clear class list for the ith element
         textAreaEl[i].classList = [];
 
-        if ( currentRowTime < Number(hour)){
+        if ( currentRowTime < hour){
             textAreaEl[i].classList.add("past");
-        } else if (currentRowTime == Number(hour)){
+        } else if (currentRowTime == hour){
             textAreaEl[i].classList.add("present");
-        } else if (currentRowTime > Number(hour)) {
+        } else if (currentRowTime > hour) {
             textAreaEl[i].classList.add("future");
         }
     }
